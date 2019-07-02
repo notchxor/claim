@@ -22,12 +22,13 @@ logging.basicConfig(filename=config.get("config","logfile"),level=logging.INFO, 
 while True:
     time.sleep(sleep)
     run(['cleos', 'wallet', 'unlock', '-n', config.get("config","wallet_name"), '--password' ,password])
+    print(chains)
     for chain in chains:
         try:
             json_owner="{\"owner\":\""+config.get(chain,"owner")+"\"}"
             authority=config.get(chain,"owner")+"@"+config.get(chain,"permission")
             cmd=['cleos','-u',config.get(chain,"api"),'push','action','eosio','claimrewards',json_owner,'-p',authority]
-            
+            print(cmd)
             run(cmd)
         
         except subprocess.CalledProcessError as err:

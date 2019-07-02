@@ -1,9 +1,0 @@
-services:
-  claim:
-    image: claim
-    command: 
-    hostname: claim
-    container_name: claim_node 
-    volumes:
-      - ./data:/mnt/dev/data
-
