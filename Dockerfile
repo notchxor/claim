@@ -8,8 +8,7 @@ RUN wget https://github.com/EOSIO/eos/releases/download/v1.7.4/eosio_1.7.4-1-ubu
 RUN dpkg -i eosio_1.7.4-1-ubuntu-18.04_amd64.deb
 ADD claim.py  /root/
 ADD config.ini /root/
-ADD keys /root/
-RUN  cleos -u https://api.eosargentina.io  wallet create -n claim --to-console | tail -n1 | cut -d "\""  -f2 > /root/wallet.txt  && cleos -u https://api.eosargentina.io wallet import -n claim --private-key  $(cat  /root/keys)
+RUN  cleos -u https://api.eosargentina.io  wallet create -n claim --to-console | tail -n1 | cut -d "\""  -f2 > /root/wallet.txt 
 ENTRYPOINT /bin/bash
 RUN echo "wallet_pass: $( cat /root/wallet.txt)" >> /root/config.ini
 CMD cleos -u https://api.eosargentina.io wallet unlock -n claim --password $(cat /root/wallet.txt)  
