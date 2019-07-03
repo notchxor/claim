@@ -17,11 +17,14 @@ chains=json.loads(config.get("chains","chains"))
 password = config.get("config","wallet_pass")
 sleep=int(config.get("config","wait_s"))
 logging.basicConfig(filename=config.get("config","logfile"),level=logging.INFO, format="%(asctime)s:%(levelname)s:%(message)s")
-run(['cleos', 'wallet', 'unlock', '-n', config.get("config","wallet_name"), '--password' ,password])
 
+
+run(['cleos', 'wallet', 'unlock', '-n', config.get("config","wallet_name"), '--password' ,password])
 for chain in chains:
     key=config.get(chain,"key")
-    run(['cleos', 'wallet','import', '-n', 'claim', '--private-key',key]
+    print("importing key: ",key)
+    run(['cleos', 'wallet','import', '-n', 'claim', '--private-key',key])
+
 while True:
     time.sleep(sleep)
     run(['cleos', 'wallet', 'unlock', '-n', config.get("config","wallet_name"), '--password' ,password])
