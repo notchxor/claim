@@ -1,0 +1,28 @@
+
+[chains]
+chains=["ore", "bos", "meetone", "mainnet"]
+
+[bos]
+api=https://bos.eosargentina.io
+owner=argentinabos
+permission=claim
+key=<priv_key>
+[meetone]
+api=https://meetone.eosargentina.io
+owner=argentina.m
+permission=claim
+key=<priv_key>
+[mainnet]
+api=https://api.eosargentina.io
+owner=argentinaeos
+permission=claim
+key=<priv_key>
+[ore]
+api=https://ore.eosargentina.io
+owner=argentinaore
+permission=claim
+key=<priv_key>
+[config]
+logfile: claim.log
+wait_s: 60
+wallet_name:claim
